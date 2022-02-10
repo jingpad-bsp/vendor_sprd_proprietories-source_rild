@@ -1,0 +1,24 @@
+Purpose:
+This moudle is used to test the command in RIL
+
+How to use in userdebug pac:
+adb root
+adb shell ./vendor/bin/hw/ril-cli module -o operation -s simId
+
+module: sim
+operation: 0 ~ 4
+    0: "SIM Hot Plug In",
+    1: "SIM Hot Plug Out",
+    2: "SIM File Refresh 0",
+    3: "SIM File Refresh 1",
+    4: "SIM File Refresh 2"
+simId: 0 ~ 1
+    0: sim1
+    1: sim2
+
+if test in user pac, please get ril-cli and libimpl-ril and push them to the target first, use the command:
+adb root
+adb remount
+adb push ril-cli /vendor/bin/hw/
+adb push libimpl-ril /vendor/lib64/
+adb shell ./vendor/bin/hw/ril-cli module -o operation -s simId
